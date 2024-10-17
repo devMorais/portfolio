@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Header;
+use App\Models\About;
 use Illuminate\Http\Request;
-use File;
 
-class HeaderController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $header = Header::first();
-        return view('admin.header.index', compact('header'));
+        $about = About::first();
+        return view('admin.about.index', compact('about'));
     }
 
     /**
@@ -55,23 +54,26 @@ class HeaderController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $request->validate([
             'title' => ['required', 'max:200'],
-            'sub_title' => ['required', 'max:500'],
-            'image' => ['max:3000', 'image']
+            'description' => ['required', 'max:5000'],
+            'image' => ['image', 'max:5000'],
+            'resume' => ['mimes:pdf,csv,txt', 'max:10000']
         ]);
 
-        $header = Header::first();
-        $imagePatch = handleUpload('image', $header);
+        $about = About::first();
 
-        Header::updateOrCreate(
+        $imagePatch = handleUpload('image', $about);
+        $resumePatch = handleUpload('resume', $about);
+
+        About::updateOrCreate(
             ['id' => $id],
             [
                 'title' => $request->title,
-                'sub_title' => $request->sub_title,
-                'btn_text' => $request->btn_text,
-                'btn_url' => $request->btn_url,
-                'image' => (!empty($imagePatch) ? $imagePatch : $header->image),
+                'description' => $request->description,
+                'image' => (!empty($imagePatch) ? $imagePatch : $about->image),
+                'resume' => (!empty($resumePatch) ? $resumePatch : $about->resume),
             ]
 
         );
@@ -81,6 +83,16 @@ class HeaderController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+
+    /**
+     * Start downloading the resume.
+     */
+    public function resumeDownload()
+    {
+        $about = About::first();
+        return response()->download(public_path($about->resume));
     }
 
     /**
