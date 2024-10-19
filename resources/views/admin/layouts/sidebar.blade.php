@@ -52,15 +52,16 @@
             </li>
             <li class="menu-header">Seções</li>
             <li class="nav-item dropdown">
-                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
-                    <span>Header</span></a>
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bullhorn"></i>
+                    <span>Hero</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.typer-title.index') }}">Título do Digitalizador</a>
                     </li>
                     <li><a class="nav-link" href="{{ route('admin.header.index') }}">Seção de cabeçalho</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-briefcase"></i>
+
+            <li><a class="nav-link" href="{{ route('admin.service.index') }}"><i class="fas fa-hands-helping"></i>
                     <span>Serviços</span></a></a>
             </li>
             <li>
@@ -68,6 +69,17 @@
                     <i class="fas fa-user"></i>
                     <span>Sobre</span>
                 </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-folder"></i>
+                    <span>Portfolio</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.category.index') }}">Categoria</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.portfolio-item.index') }}">Itens do portfólio</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.portfolio-section-setting.index') }}">Configuração de
+                            seção</a></li>
+                </ul>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
         </ul>

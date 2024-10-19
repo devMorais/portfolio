@@ -99,39 +99,48 @@
             $('body').on('click', '.delete-item', function(e) {
                 e.preventDefault();
                 let deleteUrl = $(this).attr('href');
-                //console.log(deleteUrl);
+
                 Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
+                    title: 'Tem certeza?',
+                    text: "Você não poderá reverter isso!",
+                    icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, exclua-o!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'DELETE',
                             url: deleteUrl,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
                             success: function(data) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your file has been deleted.",
-                                    icon: "success"
-                                });
-                                window.location.reload();
+                                if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Você não pode excluir!',
+                                        'Esta categoria contém itens que não podem ser excluídos!',
+                                        'error'
+                                    )
+                                } else {
+                                    Swal.fire(
+                                        'Excluída!',
+                                        'Seu arquivo foi excluído.',
+                                        'success'
+                                    )
+                                    window.location.reload();
+                                }
                             },
                             error: function(xhr, status, error) {
                                 console.log(error);
                             }
                         })
                     }
-                });
-            });
+                })
+            })
         });
     </script>
-
-
     <script>
         //toastr notifications
         @if (Session::has('message'))

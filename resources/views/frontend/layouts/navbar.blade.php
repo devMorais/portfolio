@@ -13,25 +13,25 @@
                     <a class="nav-link active" aria-current="page" href="#home-page">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about-page">About</a>
+                    <a class="nav-link" href="#about-page">Sobre</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#portfolio-page">Portfolio <i class="fas fa-angle-down"></i></a>
                     <ul class="sub_menu">
-                        <li><a href="portfolio.html">Portfolio Grid</a></li>
+                        <li><a href="portfolio.html">Grade de portfólio</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#skills-page">Skills</a>
+                    <a class="nav-link" href="#skills-page">Habilidades</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#blog-page">Blog <i class="fas fa-angle-down"></i></a>
                     <ul class="sub_menu">
-                        <li><a href="blog.html">Blog Grid</a></li>
+                        <li><a href="blog.html">Grade de blogs</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact-page">Contact</a>
+                    <a class="nav-link" href="#contact-page">Contato</a>
                 </li>
             </ul>
         </div>
