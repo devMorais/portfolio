@@ -60,7 +60,7 @@ class SkillSectionSettingController extends Controller
             'image' => ['max:5000', 'image']
         ]);
 
-        $skillSectionSetting = SkillSectionSetting::first();
+        $skillSectionSetting = SkillSectionSetting::find($id);
 
         $imagePatch = handleUpload('image', $skillSectionSetting);
 

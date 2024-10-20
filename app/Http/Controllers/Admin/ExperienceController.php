@@ -3,19 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Header;
+use App\Models\Experience;
 use Illuminate\Http\Request;
-use File;
 
-class HeaderController extends Controller
+class ExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $header = Header::first();
-        return view('admin.header.index', compact('header'));
+        return view('admin.experience.index');
     }
 
     /**
@@ -56,26 +54,29 @@ class HeaderController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+            'image' => ['max:5000', 'image'],
             'title' => ['required', 'max:200'],
-            'sub_title' => ['required', 'max:500'],
-            'image' => ['max:3000', 'image']
+            'description' => ['required', 'max:1000'],
+            'phone' => ['nullable', 'max:100'],
+            'email' => ['nullable', 'max:100', 'email']
         ]);
 
-        $header = Header::find($id);
-        $imagePatch = handleUpload('image', $header);
-        Header::updateOrCreate(
+        $experience = Experience::find($id);
+        $imagePatch = handleUpload('image', $experience);
+
+        Experience::updateOrCreate(
             ['id' => $id],
             [
+                'image' => (!empty($imagePatch) ? $imagePatch : $experience->image),
                 'title' => $request->title,
-                'sub_title' => $request->sub_title,
-                'btn_text' => $request->btn_text,
-                'btn_url' => $request->btn_url,
-                'image' => (!empty($imagePatch) ? $imagePatch : $header->image),
+                'description' => $request->description,
+                'phone' => $request->phone,
+                'email' => $request->email
             ]
 
         );
         $notification = array(
-            'message' => 'Operação Realizada!',
+            'message' => 'Atualizado com Sucesso!',
             'alert-type' => 'success'
         );
 

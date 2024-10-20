@@ -1,17 +1,24 @@
 <header class="header-area parallax-bg" id="home-page"
-    style="background: url('{{ asset($header->image) }}') no-repeat scroll top center/cover;">
+    style="background: url('{{ isset($header->image) ? asset($header->image) : '' }}') no-repeat scroll top center/cover;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="header-text">
                     <h3 class="typer-title wow fadeInUp" data-wow-delay="0.2s">I'm ui/ux designer</h3>
-                    <h2 class="title wow fadeInUp" data-wow-delay="0.3s">{{ $header->title }}</h2>
-                    <div class="desc wow fadeInUp" data-wow-delay="0.4s">
-                        <p>
-                            {{ $header->sub_title }}
-                        </p>
-                    </div>
-                    @if ($header->btn_text)
+
+                    @if (isset($header->title))
+                        <h2 class="title wow fadeInUp" data-wow-delay="0.3s">{{ $header->title }}</h2>
+                    @endif
+
+                    @if (isset($header->sub_title))
+                        <div class="desc wow fadeInUp" data-wow-delay="0.4s">
+                            <p>
+                                {{ $header->sub_title }}
+                            </p>
+                        </div>
+                    @endif
+
+                    @if (isset($header->btn_text))
                         <a href="{{ $header->btn_url }}" class="button-dark mouse-dir wow fadeInUp"
                             data-wow-delay="0.5s">{{ $header->btn_text }}
                             <span class="dir-part"></span></a>

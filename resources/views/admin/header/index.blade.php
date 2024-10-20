@@ -22,21 +22,21 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" value="{{ $header->title }}"
+                                        <input type="text" name="title" value="{{ optional($header)->title }}"
                                             class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub-Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="sub_title" id="" class="form-control" style="height: 100px">{{ $header->sub_title }}</textarea>
+                                        <textarea name="sub_title" class="form-control" style="height: 100px">{{ optional($header)->sub_title }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Texto do
                                         botão</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="btn_text" value="{{ $header->btn_text }}"
+                                        <input type="text" name="btn_text" value="{{ optional($header)->btn_text }}"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -44,7 +44,7 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">URL do
                                         Botão</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="btn_url" value="{{ $header->btn_url }}"
+                                        <input type="text" name="btn_url" value="{{ optional($header)->btn_url }}"
                                             class="form-control">
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($header->image)
+                                @if (optional($header)->image)
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Visualização da
                                             imagem</label>
@@ -71,7 +71,9 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Atualizar</button>
+                                        <button class="btn btn-primary">
+                                            {{ $header ? 'Atualizar' : 'Cadastrar' }}
+                                        </button>
                                     </div>
                                 </div>
                             </form>

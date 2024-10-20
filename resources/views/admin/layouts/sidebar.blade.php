@@ -80,7 +80,7 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-folder"></i>
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-brain"></i>
                     <span>Habilidades</span></a>
                 <ul class="dropdown-menu" style="display: none;">
                     <li><a class="nav-link" href="{{ route('admin.skill-item.index') }}">Itens de habilidades</a></li>
@@ -88,6 +88,12 @@
                             seção</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a class="nav-link" href="{{ route('admin.experience.index') }}">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Experiência</span>
+                </a>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
         </ul>

@@ -31,17 +31,17 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" value="{{ $about->title }}"
+                                        <input type="text" name="title" value="{{ optional($about)->title }}""
                                             class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Descrição</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="description" class="summernote">{!! $about->description !!}</textarea>
+                                        <textarea name="description" class="summernote">{!! optional($about)->description !!}</textarea>
                                     </div>
                                 </div>
-                                @if ($about->resume)
+                                @if (optional($about)->resume)
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12-md3 col-lg-3"></label>
                                         <div class="col-sm-12 col-md-7">
@@ -63,7 +63,9 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Atualizar</button>
+                                        <button class="btn btn-primary">
+                                            {{ isset($about) ? 'Atualizar' : 'Cadastrar' }}
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -78,7 +80,7 @@
     <script>
         $(document).ready(function() {
             $('#image-preview').css({
-                'background-image': 'url("{{ asset($about->image) }}")',
+                'background-image': 'url("{{ optional($about)->image ? asset($about->image) : '' }}")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             });

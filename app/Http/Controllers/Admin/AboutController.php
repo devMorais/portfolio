@@ -62,7 +62,7 @@ class AboutController extends Controller
             'resume' => ['mimes:pdf,csv,txt', 'max:10000']
         ]);
 
-        $about = About::first();
+        $about = About::find($id);
 
         $imagePatch = handleUpload('image', $about);
         $resumePatch = handleUpload('resume', $about);
@@ -78,7 +78,7 @@ class AboutController extends Controller
 
         );
         $notification = array(
-            'message' => 'Atualizado com Sucesso!',
+            'message' => 'Operação Realizada com Sucesso!',
             'alert-type' => 'success'
         );
 

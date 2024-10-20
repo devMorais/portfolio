@@ -22,20 +22,22 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" value="{{ $portfolio->title }}"
+                                        <input type="text" name="title" value="{{ optional($portfolio)->title }}"
                                             class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sub-Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="sub_title" id="" class="form-control" style="height: 100px">{!! $portfolio->sub_title !!}</textarea>
+                                        <textarea name="sub_title" id="" class="form-control" style="height: 100px">{!! optional($portfolio)->sub_title !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Atualizar</button>
+                                        <button class="btn btn-primary">
+                                            {{ isset($portfolio) ? 'Atualizar' : 'Cadastrar' }}
+                                        </button>
                                     </div>
                                 </div>
                             </form>
