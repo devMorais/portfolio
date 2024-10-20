@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Category;
+use App\Models\SkillItem;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,9 +12,8 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CategoryDataTable extends DataTable
+class SkillItemDataTable extends DataTable
 {
-
     /**
      * Build the DataTable class.
      *
@@ -24,8 +23,8 @@ class CategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                return '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-primary btn-small"><i class="fas fa-edit"></i></a>
-                    <a href="' . route('admin.category.destroy', $query->id) . '" class="delete-item btn btn-danger btn-small"><i class="fas fa-trash"></i></a>';
+                return '<a href="' . route('admin.skill-item.edit', $query->id) . '" class="btn btn-primary btn-small"><i class="fas fa-edit"></i></a>
+                        <a href="' . route('admin.skill-item.destroy', $query->id) . '" class="delete-item btn btn-danger btn-small"><i class="fas fa-trash"></i></a>';
             })
             ->setRowId('id');
     }
@@ -33,7 +32,7 @@ class CategoryDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(Category $model): QueryBuilder
+    public function query(SkillItem $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -44,7 +43,7 @@ class CategoryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('category-table')
+            ->setTableId('typertitle-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0)
@@ -83,13 +82,13 @@ class CategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->width(40)->title('ID'),
-            Column::make('name')->width(250)->addClass('text-center')->title('Nome'),
-            Column::make('slug')->width(100)->addClass('text-center'),
+            Column::make('id')->width(60)->title('ID'),
+            Column::make('name')->addClass('text-center')->title('Nome'),
+            Column::make('percent')->addClass('text-center')->title('Porcentagem'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(100)
+                ->width(200)
                 ->addClass('text-center')->title('Ações'),
         ];
     }
@@ -99,6 +98,6 @@ class CategoryDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Category_' . date('YmdHis');
+        return 'SkillItem_' . date('YmdHis');
     }
 }

@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\TyperTitleDataTable;
+use App\DataTables\SkillItemDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\TyperTitle;
+use App\Models\SkillItem;
 use Illuminate\Http\Request;
 
-class TyperTitleController extends Controller
+class SkillItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(TyperTitleDataTable $dataTable)
+    public function index(SkillItemDataTable $dataTable)
     {
-        return $dataTable->render('admin.typer-title.index');
+        return $dataTable->render('admin.skill-item.index');
     }
 
     /**
@@ -22,7 +22,7 @@ class TyperTitleController extends Controller
      */
     public function create()
     {
-        return view('admin.typer-title.create');
+        return view('admin.skill-item.create');
     }
 
     /**
@@ -30,20 +30,24 @@ class TyperTitleController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
-            'title' => ['required', 'max:200']
+            'name' => ['required', 'max:100'],
+            'percent' => ['required', 'numeric', 'max:100']
         ]);
 
-        $title = new TyperTitle();
-        $title->title = $request->title;
+        $skill = new SkillItem();
 
-        $title->save();
+        $skill->name = $request->name;
+        $skill->percent = $request->percent;
+
+        $skill->save();
+
         $notification = array(
-            'message' => 'Título Criado com Sucesso!',
+            'message' => 'Criado com Sucesso!',
             'alert-type' => 'success'
         );
-        return redirect()->route('admin.typer-title.index')->with($notification);
+
+        return redirect()->route('admin.skill-item.index')->with($notification);
     }
 
     /**
@@ -59,8 +63,9 @@ class TyperTitleController extends Controller
      */
     public function edit(string $id)
     {
-        $title = TyperTitle::findOrFail($id);
-        return view('admin.typer-title.edit', compact('title'));
+
+        $skill = SkillItem::findOrfail($id);
+        return view('admin.skill-item.edit', compact('skill'));
     }
 
     /**
@@ -69,18 +74,20 @@ class TyperTitleController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => ['required', 'max:200']
+            'name' => ['required', 'max:100'],
+            'percent' => ['required', 'numeric', 'max:100']
         ]);
 
-        $title = TyperTitle::findOrFail($id);
-        $title->title = $request->title;
+        $skill = SkillItem::findOrfail($id);
+        $skill->name = $request->name;
+        $skill->percent = $request->percent;
 
-        $title->save();
+        $skill->save();
         $notification = array(
             'message' => 'Atualizado com Sucesso!',
             'alert-type' => 'success'
         );
-        return redirect()->route('admin.typer-title.index')->with($notification);
+        return redirect()->route('admin.skill-item.index')->with($notification);
     }
 
     /**
@@ -88,7 +95,7 @@ class TyperTitleController extends Controller
      */
     public function destroy(string $id)
     {
-        $title = TyperTitle::findOrFail($id);
-        $title->delete();
+        $SkillItem = SkillItem::findOrFail($id);
+        $SkillItem->delete();
     }
 }

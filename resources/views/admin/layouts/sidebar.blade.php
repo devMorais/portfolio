@@ -35,9 +35,6 @@
         <div class="sidebar-brand">
             <a href="index.html">DevMorais - Admin</a>
         </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
-        </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="nav-item active">
@@ -79,6 +76,17 @@
                     <li><a class="nav-link" href="{{ route('admin.portfolio-item.index') }}">Itens do portfólio</a></li>
                     <li><a class="nav-link" href="{{ route('admin.portfolio-section-setting.index') }}">Configuração de
                             seção</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-folder"></i>
+                    <span>Habilidades</span></a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.skill-item.index') }}">Itens de habilidades</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.skill-section-setting.index') }}">Configuração de
+                            seção</a>
+                    </li>
                 </ul>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}

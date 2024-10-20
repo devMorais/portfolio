@@ -5,10 +5,11 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HeaderController;
 use App\Http\Controllers\Admin\PortfolioItemController;
-use App\Http\Controllers\Admin\PortfolioSectionSetting;
 use App\Http\Controllers\Admin\PortfolioSectionSettingController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SkillItemController;
+use App\Http\Controllers\Admin\SkillSectionSettingController;
 use App\Http\Controllers\Admin\TyperTitleController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -58,4 +59,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /* Portfolio Section Setting route */
     Route::resource('portfolio-section-setting', PortfolioSectionSettingController::class);
+
+    /* Skill Section Setting route */
+    Route::resource('skill-section-setting', SkillSectionSettingController::class);
+
+    /* Skill Items route */
+    Route::resource('skill-item', SkillItemController::class);
 });

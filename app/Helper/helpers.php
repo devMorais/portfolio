@@ -41,7 +41,15 @@ function deleteFileIfExist($filePath)
 
 function getColor($index)
 {
-    $colors = ['#558bff', '#fecc90', '#ff885e', '#282828', '#190844', '#9dd3ff'];
+    // $colors = ['#558bff', '#fecc90', '#ff885e', '#282828', '#190844', '#9dd3ff'];
+    $colors = [
+        '#f75639', // Cor base 1
+        '#0c3a68', // Cor base 2
+        '#ffcc00', // Amarelo vibrante (contraste com o vermelho)
+        '#005b96', // Azul escuro (contraste com o azul)
+        '#ff8c00', // Laranja (contraste com o vermelho)
+        '#a3d0e1'  // Azul claro (contraste suave com o azul escuro)
+    ];
 
     return $colors[$index % count($colors)];
 }

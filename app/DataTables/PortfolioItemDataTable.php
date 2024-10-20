@@ -62,7 +62,7 @@ class PortfolioItemDataTable extends DataTable
             ->minifiedAjax()
             ->orderBy(0)
             ->selectStyleSingle()
-            ->pageLength(5) // Define o número de registros por página
+            ->pageLength(10) // Define o número de registros por página
             ->lengthChange(false) // Desabilita o seletor de "entries per page"
             ->language([
                 'sProcessing' => 'Processando...',
