@@ -2,8 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Category;
-use App\Models\PortfolioItem;
+use App\Models\Blog;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -13,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PortfolioItemDataTable extends DataTable
+class BlogDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -26,18 +25,15 @@ class PortfolioItemDataTable extends DataTable
             ->addColumn('image', function ($query) {
                 return '<img style="width:70px" src="' . asset($query->image) . '"></img>';
             })
-            ->addColumn('created_at', function ($query) {
-                return date('d-m-Y', strtotime($query->created_at));
-            })
             ->addColumn('category', function ($query) {
-                if ($query->category) {
-                    return $query->category->name;
-                }
-                return 'Sem categoria'; // ou qualquer outro valor que faça sentido
+                return $query->getCategory->name;
+            })
+            ->addColumn('created_at', function ($query) {
+                return date('d-m-Y - H:s', strtotime($query->created_at));
             })
             ->addColumn('action', function ($query) {
-                return '<a href="' . route('admin.portfolio-item.edit', $query->id) . '" class="btn btn-primary btn-small"><i class="fas fa-edit"></i></a>
-                        <a href="' . route('admin.portfolio-item.destroy', $query->id) . '" class="delete-item btn btn-danger btn-small"><i class="fas fa-trash"></i></a>';
+                return '<a href="' . route('admin.blog.edit', $query->id) . '" class="btn btn-primary btn-small"><i class="fas fa-edit"></i></a>
+                        <a href="' . route('admin.blog.destroy', $query->id) . '" class="delete-item btn btn-danger btn-small"><i class="fas fa-trash"></i></a>';
             })
             ->rawColumns(['image', 'action'])
             ->setRowId('id');
@@ -46,7 +42,7 @@ class PortfolioItemDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(PortfolioItem $model): QueryBuilder
+    public function query(Blog $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -57,7 +53,7 @@ class PortfolioItemDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('portfolioitem-table')
+            ->setTableId('blog-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->orderBy(0)
@@ -114,6 +110,6 @@ class PortfolioItemDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'PortfolioItem_' . date('YmdHis');
+        return 'Blog_' . date('YmdHis');
     }
 }

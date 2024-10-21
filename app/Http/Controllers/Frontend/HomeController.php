@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Experience;
 use App\Models\Feedback;
@@ -33,6 +34,7 @@ class HomeController extends Controller
         $experience = Experience::first();
         $feedbacks = Feedback::all();
         $feedbackSectionSetting = FeedbackSectionSetting::first();
+        $blogs = Blog::latest()->take(5)->get();
         return view('frontend.home', compact(
             'header',
             'typerTitles',
@@ -45,7 +47,8 @@ class HomeController extends Controller
             'skillItems',
             'experience',
             'feedbacks',
-            'feedbackSectionSetting'
+            'feedbackSectionSetting',
+            'blogs'
         ));
     }
 

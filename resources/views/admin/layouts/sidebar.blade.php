@@ -4,7 +4,7 @@
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                <img alt="image" src="{{ asset('frontend/assets/images/skill.jpg') }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -106,6 +106,19 @@
                     </li>
                     <li><a class="nav-link" href="{{ route('admin.feedback-section-setting.index') }}">Configuração
                             de seção</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.blog-category.index') }}">Categoria</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.blog.index') }}">Lista de
+                            Blogs</a></li>
                 </ul>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
