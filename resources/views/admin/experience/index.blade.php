@@ -31,32 +31,37 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Título</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="title" value="" class="form-control">
+                                        <input type="text" name="title" value="{{ optional($experience)->title }}"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Descrição</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="description" class="summernote"></textarea>
+                                        <textarea name="description" class="summernote">{!! optional($experience)->description !!}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Telefone</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="phone" value="" class="form-control">
+                                        <input type="text" name="phone" value="{{ optional($experience)->phone }}"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Email</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="email" name="email" value="" class="form-control">
+                                        <input type="email" name="email" value="{{ optional($experience)->email }}"
+                                            class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Atualizar</button>
+                                        <button class="btn btn-primary">
+                                            {{ isset($experience) ? 'Atualizar' : 'Cadastrar' }}
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -71,7 +76,7 @@
     <script>
         $(document).ready(function() {
             $('#image-preview').css({
-                'background-image': 'url("")',
+                'background-image': 'url("{{ asset(optional($experience)->image) }}")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             });

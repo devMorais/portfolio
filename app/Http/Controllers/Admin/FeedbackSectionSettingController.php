@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Experience;
+use App\Models\FeedbackSectionSetting;
 use Illuminate\Http\Request;
 
-class ExperienceController extends Controller
+class FeedbackSectionSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $experience = Experience::first();
-        return view('admin.experience.index', compact('experience'));
+        $feedbackSectionSetting = FeedbackSectionSetting::first();
+        return view('admin.feedback-setting.index', compact('feedbackSectionSetting'));
     }
 
     /**
@@ -55,29 +55,20 @@ class ExperienceController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'image' => ['max:5000', 'image'],
-            'title' => ['required', 'max:200'],
-            'description' => ['required', 'max:1000'],
-            'phone' => ['nullable', 'max:100'],
-            'email' => ['nullable', 'max:100', 'email']
+            'title' => ['required', 'max:100'],
+            'sub_title' => ['required', 'max:500']
         ]);
 
-        $experience = Experience::find($id);
-        $imagePatch = handleUpload('image', $experience);
-
-        Experience::updateOrCreate(
+        FeedbackSectionSetting::updateOrCreate(
             ['id' => $id],
             [
-                'image' => (!empty($imagePatch) ? $imagePatch : $experience->image),
                 'title' => $request->title,
-                'description' => $request->description,
-                'phone' => $request->phone,
-                'email' => $request->email
+                'sub_title' => $request->sub_title,
             ]
 
         );
         $notification = array(
-            'message' => 'Atualizado com Sucesso!',
+            'message' => 'Operação Realizada!',
             'alert-type' => 'success'
         );
 

@@ -5,7 +5,7 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                <div class="d-sm-none d-lg-inline-block"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
@@ -94,6 +94,19 @@
                     <i class="fas fa-user-tie"></i>
                     <span>Experiência</span>
                 </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-comments"></i>
+                    <span>Feedback</span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.feedback.index') }}">Feedbacks</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.feedback-section-setting.index') }}">Configuração
+                            de seção</a></li>
+                </ul>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}
         </ul>
