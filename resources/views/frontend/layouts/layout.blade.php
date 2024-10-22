@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>DevMorais - Soluções Digitais</title>
 
     <link rel="shortcut icon" type="image/ico" href="{{ asset('frontend/assets/images/favicon.png') }}" />
@@ -39,7 +40,8 @@
     <script src="{{ asset('frontend/assets/js/jquery-plugin-collection.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/vendor/modernizr.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
     @stack('scripts')
 </body>
 

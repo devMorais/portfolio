@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BlogSectionSettingController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactSectionSettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeedbackController;
@@ -48,6 +49,9 @@ Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('show
 
 /* Blogs routes */
 Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
+
+/* Contact routes */
+Route::post('contact', [HomeController::class, 'contact'])->name('contact');
 
 
 // Admin Routes
@@ -96,4 +100,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /* Blog Section Setting Route */
     Route::resource('blog-section-setting', BlogSectionSettingController::class);
+
+    /* Contact Section Setting Route */
+    Route::resource('contact-section-setting', ContactSectionSettingController::class);
 });
