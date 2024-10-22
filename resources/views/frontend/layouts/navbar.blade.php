@@ -24,14 +24,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#skills-page">Habilidades</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#blog-page">Blog <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub_menu">
-                        <li><a href="blog.html">Grade de blogs</a></li>
-                    </ul>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#contact-page">Contato</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('blog') }}">Blogs</a>
                 </li>
             </ul>
         </div>

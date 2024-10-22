@@ -119,6 +119,8 @@
                     </li>
                     <li><a class="nav-link" href="{{ route('admin.blog.index') }}">Lista de
                             Blogs</a></li>
+                    <li><a class="nav-link" href="{{ route('admin.blog-section-setting.index') }}">Configuração
+                            de seção</a></li>
                 </ul>
             </li>
             {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li> --}}

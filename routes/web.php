@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlogSectionSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperienceController;
@@ -41,6 +42,13 @@ require __DIR__ . '/auth.php';
 
 /* Portfolio Details routes */
 Route::get('portfolio-details/{id}', [HomeController::class, 'showPortfolio'])->name('show.portfolio');
+
+/* Blog Details routes */
+Route::get('blog-details/{id}', [HomeController::class, 'showBlog'])->name('show.blog');
+
+/* Blogs routes */
+Route::get('blogs', [HomeController::class, 'blog'])->name('blog');
+
 
 // Admin Routes
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -85,4 +93,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /* Blog Route */
     Route::resource('blog', BlogController::class);
+
+    /* Blog Section Setting Route */
+    Route::resource('blog-section-setting', BlogSectionSettingController::class);
 });

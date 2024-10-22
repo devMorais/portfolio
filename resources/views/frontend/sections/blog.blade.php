@@ -3,11 +3,9 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3 text-center">
                 <div class="section-title">
-                    <h3 class="title">Creative Blog Post</h3>
+                    <h3 class="title">{{ $blogSection->title }}</h3>
                     <div class="desc">
-                        <p>Earum quos animi numquam excepturi eveniet explicabo repellendus rem esse.
-                            Quae quasi
-                            odio enim.</p>
+                        <p>{!! $blogSection->sub_title !!}</p>
                     </div>
                 </div>
             </div>
@@ -17,18 +15,18 @@
                 <div class="blog-slider">
                     @foreach ($blogs as $blog)
                         <div class="single-blog">
-
                             <figure class="blog-image">
-                                <img src="{{ asset($blog->image) }}" alt="">
+                                <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
                             </figure>
                             <div class="blog-content">
-                                <h3 class="title"><a href="blog-details.html">{{ $blog->title }}</a>
+                                <h3 class="title"><a href="{{ route('show.blog', $blog->id) }}">{{ $blog->title }}</a>
                                 </h3>
                                 <div class="desc">
                                     {!! Str::limit($blog->description, 150, '...') !!}
                                 </div>
-                                <a href="#" class="button-primary-trans mouse-dir">Leia mais<span
-                                        class="dir-part"></span> <i class="fal fa-arrow-right"></i></a>
+                                <a href="{{ route('show.blog', $blog->id) }}"
+                                    class="button-primary-trans mouse-dir">Leia mais<span class="dir-part"></span> <i
+                                        class="fal fa-arrow-right"></i></a>
                             </div>
                         </div>
                     @endforeach
