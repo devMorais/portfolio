@@ -135,6 +135,26 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a href="" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Rodapé</span>
+                </a>
+                <ul class="dropdown-menu" style="display: none;">
+                    <li><a class="nav-link" href="{{ route('admin.footer-social.index') }}">Links
+                            Sociais</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-info.index') }}">Info do Rodapé</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-contact-info.index') }}">Contato no
+                            Rodapé</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-useful-links.index') }}">Links Úteis</a>
+                    </li>
+                    <li><a class="nav-link" href="{{ route('admin.footer-help-links.index') }}">Links de Ajuda</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>
