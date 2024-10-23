@@ -1,3 +1,6 @@
+@php
+    $generalSetting = \App\Models\GeneralSetting::first();
+@endphp
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,6 +11,7 @@
     <title>Dashboard</title>
 
     <!-- General CSS Files -->
+    <link rel="shortcut icon" type="image/ico" href="{{ asset($generalSetting->favicon) }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"

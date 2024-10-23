@@ -1,14 +1,20 @@
+@php
+    $generalSetting = \App\Models\GeneralSetting::first();
+    $seoSetting = \App\Models\SeoSetting::first();
+@endphp
 <!doctype html>
 <html class="no-js" lang="pt-BR">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>DevMorais - Soluções Digitais</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ @$seoSetting->description }}">
+    <meta name="keywords" content="{{ @$seoSetting->keywords }}">
+    <title>{!! @$seoSetting->title !!}</title>
 
-    <link rel="shortcut icon" type="image/ico" href="{{ asset('frontend/assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" type="image/ico" href="{{ asset($generalSetting->favicon) }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style-plugin-collection.css') }}">
@@ -41,7 +47,6 @@
     <script src="{{ asset('frontend/assets/js/vendor/modernizr.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
     @stack('scripts')
 </body>
 
